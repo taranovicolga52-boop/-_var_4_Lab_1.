@@ -1,0 +1,19 @@
+coordinates = []
+for i in range(4):
+    x = float(input(f"Введіть x{i+1}: "))
+    y = float(input(f"Введіть y{i+1}: "))
+    coordinates.append((x, y))
+
+def polygon_area(coords):
+    x_coords = [point[0] for point in coords]
+    y_coords = [point[1] for point in coords]
+    area = 0
+    n = len(coords)
+    for i in range(n):
+        j = (i + 1) % n
+        area += x_coords[i] * y_coords[j]
+        area -= y_coords[i] * x_coords[j]
+    return abs(area) / 2
+
+area = polygon_area(coordinates)
+print(f"Площа чотирикутника: {area:.3f}")
